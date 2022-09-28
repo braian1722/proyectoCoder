@@ -1,0 +1,20 @@
+.contenidoMateria{
+    background-color: blanchedalmond;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.formDataMateria{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
+    gap: 10px;
+    background-color: black;
+    border-radius: 5px;
+    padding: 20px;
+
+
+}

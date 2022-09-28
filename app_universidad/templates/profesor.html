@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/EstiloProf.css' %}">
+{% block contenido%}
+   
+   <dib class="contenidoProfesor" >
+
+      <form class="formDataProfesor" action="/app_universidad/profesores/" method="POST"> {% csrf_token %} 
+
+         <input type="text" name="Nombre" placeholder="nombre">
+         <input type="text" name="apellido" placeholder="apellido">
+         <input type="email" name="email" placeholder="email">
+         <input type="text" name="profecion" placeholder="profecion">
+         <button type="submit" class="btn btn-primary btndj">registrar</button>
+         
+      </form>
+
+      
+   </dib>
+   <!--buscar profesor-->
+   <div>
+
+      <form class="formDataProfesor" action="/app_universidad/buscarProfesor/" method="GET"> 
+       
+         <input type ="email" name = "email" placeholder="email">
+         <button type="submit" class="btn btn-primary btndj">BUSCAR</button>
+         
+      </form>
+
+   </div>
+   <div>
+      {% if profesores %}
+       <ul>
+         {% for  profesor in profesores %}
+          <li>{{profesor.nombre}}</li>
+          <li>{{profesor.apellido}}</li>
+          <li>{{profesor.email}}</li>
+          <li>{{profesor.profecion}}</li>
+         {% endfor %}
+       </ul>
+      {%endif%}
+
+   </div>
+
+{%endblock%}   

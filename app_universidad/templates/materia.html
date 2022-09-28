@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'css/EstiloMaterias.css' %}">
+{% block contenido%}
+   
+   <dib class="contenidoMateria" >
+
+      <form class="formDataMateria" action="/app_universidad/materias/" method="POST"> {% csrf_token %} 
+
+         <input type="text" name="materia" placeholder="materia">
+         <input type="text" name="turno" placeholder="turno">
+         <input type="number" name="comision" placeholder="comision">
+         
+         <button type="submit" class="btn btn-primary btndj">Cargar</button>
+         
+      </form>
+
+      
+   </dib>
+   <!--buscar materia-->
+   <div>
+
+      <form class="formDataMateria" action="/app_universidad/buscarMaterias/" method="GET"> 
+       
+         <input type ="number" name = "comision" placeholder="comision">
+         <button type="submit" class="btn btn-primary btndj">BUSCAR</button>
+         
+      </form>
+
+   </div>
+   <div>
+      {% if materias %}
+       <ul>
+         {% for materia in materias %}
+          <li>{{materia.materia}}</li>
+          <li>{{materia.turno}}</li>
+          <li>{{materia.comision}}</li>
+         {% endfor %}
+       </ul>
+      {%endif%}
+
+   </div>
+
+{%endblock%}   
